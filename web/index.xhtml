@@ -3,37 +3,126 @@
 <ui:composition template="/WEB-INF/template/template.xhtml"
                 xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
-                xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
 
     <!--Nombre de la pagina-->
     <ui:define name="pageTitle">
-
         
     </ui:define>
 
     <!--estilos adicionales si son necesarias-->
     <ui:define name="firstStyle">
+
     </ui:define>
 
     <!--titulo del contenido principal-->
     <ui:define name="mainContentTitle">
-
-        
-        
+        Modulo xxx
     </ui:define>
 
     <!--contenido principal de la pagina-->
     <ui:define name="mainContent">
 
-        
-        
+        <h:form prependId="false" id="formulario">
+
+            <div class="panel-heading">
+                <div class="panel-title">titulo form</div>
+            </div>
+            <div class="panel-body">
+                <fieldset>
+
+                    <div class="form-group">
+                        <label>campo 1</label>
+                        <h:inputText id="campo1" a:name="campo1" class="form-control" value="" a:type="text" a:placeholder=""></h:inputText>
+                    </div>
+
+                    <div class="form-group">
+                        <label>campo 2</label>
+                        <h:inputText id="campo2" a:name="campo2" class="form-control" value="" a:type="text" a:placeholder=""></h:inputText>
+                    </div>
+
+                    <div class="form-group">
+                        <label>campo 3</label>
+                        <h:inputText id="campo3" a:name="campo3" class="form-control" value="" a:type="text" a:placeholder=""></h:inputText>
+                    </div>
+
+                </fieldset>
+                <div>
+                    <h:commandButton value="enviar" class="btn btn-primary"></h:commandButton>
+                </div>
+            </div>
+
+        </h:form>
+
+        <div class="content-box-large">
+            <div class="panel-heading">
+                <div class="panel-title">listar xxxx</div>
+            </div>
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>id</th>
+                                <th>campo 1</th>
+                                <th>campo 2</th>
+                                <th>campo 3</th>
+                                <th>opciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <ui:repeat value="" var="">
+                                    <tr>
+                                        <td><h:outputText value=""></h:outputText></td>
+                                        <td><h:outputText value=""></h:outputText></td>
+                                        <td><h:outputText value=""></h:outputText></td>
+                                        <!--<td><h:commandButton value="editar" action=""></h:commandButton></td>-->
+                                    </tr>
+                            </ui:repeat>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+
     </ui:define>
 
     <!--Scripts adicionales si son necesarios-->
     <ui:define name="lastScripts">
         
+        <script src="#{request.contextPath}/resources/js/jquery.validate.min.js"></script>
         
-            
+        <script>
+            $().ready(function() {
+                $("#formulario").validate({
+                    rules: {
+                        campo1: {
+                            required:true,
+                            minlength:3
+                        },
+                        campo2:{
+                            required:true,
+                            minlength:3
+                        }
+                    },
+                    messages:{
+                        campo1:{
+                            required:"ingrese un nombre valido",
+                            minlength:"el campo debe tener mas de 3 caracteres",
+                        },
+                        campo2:{
+                            required:"ingrese su contraseña",
+                            minlength:"la contraseña debe tener mas de 3 caracteres",
+                        }
+                        
+                    }
+                })
+            });
+
+        </script>
+        
     </ui:define>
 
 </ui:composition>
